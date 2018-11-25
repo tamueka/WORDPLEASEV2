@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main_title %} WORDPLEASE {% endblock %}
+
+{% block main_body %}
+    <h1>{{ blog.titulo}}</h1>
+        <h3>{{ blog.texto }}</h3>
+        <p>{{ blog.cuerpo }}</p>
+    <a href="#"><img src="{{ blog.url.url }}" alt="{{ blog.url.name }}" title="{{ blog.url.name }}"></a>
+         <p>{{ blog.fecha|date:"d/m/Y H:i"}}</p>
+        <p>Categoria: {{blog.categorias }}</p>
+        <p>Escrito por: {{ blog.usuario.first_name }} {{ blog.usuario.last_name }}</p>
+{% endblock %}

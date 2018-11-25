@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block main_title %} WORDPLEASE {% endblock %}
+
+{% block main_body %}
+    <p>Plataforma de blogging</p>
+    <hr>
+    {% for blog in blogs %}
+    <a href="{% url 'blog_detail' blog.pk %}"><h2>{{ blog.titulo }} ({{ blog.get_categorias_display }})</h2></a>
+        <h3>{{ blog.texto }}</h3>
+        <p>{{ blog.cuerpo }}</p>
+    <a href="{% url 'blog_detail' blog.pk %}"><img src="{{ blog.url.url }}" alt="{{ blog.url.name }}" title="{{ blog.url.name }}"></a>
+         <p>{{ blog.fecha}}</p>
+        <p>Categoria: {{blog.categorias }}</p>
+        <p>Escrito por: {{ blog.usuario.first_name }} {{ blog.usuario.last_name }}</p>
+    {% endfor %}
+{% endblock %}

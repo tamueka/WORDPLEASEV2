@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main_title %} NEW POST {% endblock %}
+
+{% block main_body %}
+    <form method="post" novalidate enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create new post</button>
+    </form>
+{% endblock %}

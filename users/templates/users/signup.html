@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head_title %} Sign Up {% endblock %}
+
+{% block main_title %} Sign Up {% endblock %}
+
+{% block main_body %}
+     <form method="post" novalidate>
+        {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit">Register</button>
+     </form>
+{% endblock %}
