@@ -13,11 +13,11 @@ def home(request):
 
 def blog_detail(request, blog_pk):
     try:
-        blog = Blog.objects.select_related('usuario').get(pk=blog_pk)
+        blog = Blog.objects.get(pk=blog_pk)
         context = {'blog': blog}
         return render(request, 'blogs/blog_detail.html', context)
     except Blog.DoesNotExist:
-        return HttpResponse('Blog not found', status = 404)
+        return HttpResponse('Blog not found', status=404)
 
 def blogs(request):
     # 1) Obtenemos blogs de la base de datos y los ordenamos por ultimos blogs publicados
