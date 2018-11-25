@@ -23,7 +23,7 @@ def blogs(request):
     # 1) Obtenemos blogs de la base de datos y los ordenamos por ultimos blogs publicados
     blogs_lista = Blog.objects.select_related('usuario').all().order_by('-fecha')
 
-    # 2) Pasar los blogs a ala plantilla para que esta los muestre en HTML
+    # 2) Pasar los blogs a a la plantilla para que esta los muestre en HTML
     context = {'blogs': blogs_lista}
     return render(request, 'blogs/blogs.html', context)
 
