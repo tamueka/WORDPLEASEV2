@@ -1,4 +1,4 @@
-#!C:\Users\sam\Desktop\sam\env\Scripts\python.exe
+#!C:\Users\sam\Desktop\WORDPLEASEV1\env\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==10.0.1','console_scripts','pip3'
 __requires__ = 'pip==10.0.1'
 import re
