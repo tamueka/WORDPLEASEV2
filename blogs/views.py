@@ -16,11 +16,12 @@ class HomeView(View):
 
 class BlogDetailView(View):
     def get(self, request, blog_pk):
-            try:
+
+        try:
                 blog = Blog.objects.get(pk=blog_pk)
                 context = {'blog': blog}
                 return render(request, 'blogs/blog_detail.html', context)
-            except Blog.DoesNotExist:
+        except Blog.DoesNotExist:
                 return HttpResponse('Blog not found', status=404)
 
 
