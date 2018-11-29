@@ -2,7 +2,14 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
+class UserListSerializer(serializers.ListSerializer):
+    id = serializers.ReadOnlyField()
+    first_name = serializers.CharField()
+    last_name = serializers.CharField()
+    username = serializers.CharField()
+
 class UserSerializer(serializers.Serializer):
+
 
     id = serializers.ReadOnlyField()
     first_name = serializers.CharField()
