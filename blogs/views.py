@@ -16,7 +16,6 @@ class HomeView(View):
 
 class BlogDetailView(View):
     def get(self, request, blog_pk):
-
         try:
                 blog = Blog.objects.get(pk=blog_pk)
                 context = {'blog': blog}
