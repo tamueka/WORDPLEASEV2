@@ -29,3 +29,10 @@ class UserDetailAPIView(APIView):
         user = get_object_or_404(User, pk=pk)
         serializer = UserSerializer(user)
         return Response(serializer.data)
+
+    def put(self, request, pk):
+        user = get_object_or_404(User, pk=pk)
+        serializer = UserSerializer(User, data=request.data)
+        serializer.is_valid(raise_exception=True)  # devuelve una respuesta 400 BAD REQUEST
+        serializer.save()
+        return Response(serializer.data)
