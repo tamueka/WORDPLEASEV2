@@ -18,7 +18,7 @@ class UsersListAPIView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if not serializer.is_valid():
-            return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -36,3 +36,8 @@ class UserDetailAPIView(APIView):
         serializer.is_valid(raise_exception=True)  # devuelve una respuesta 400 BAD REQUEST
         serializer.save()
         return Response(serializer.data)
+
+    def delete(self, resquest, pk):
+        user = get_object_or_404(User, pk=pk)
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
