@@ -1,5 +1,5 @@
 from rest_framework import status
-from rest_framework.generics import get_object_or_404, ListCreateAPIView
+from rest_framework.generics import get_object_or_404, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -15,20 +15,7 @@ class BlogListAPIView(ListCreateAPIView):
         return BlogListSerializer if self.request.method == 'GET' else BlogSerializer
 
 
-class BlogDetailAPIView(APIView):
-    def get(self, request, pk):
-        blog = get_object_or_404(Blog, pk=pk)
-        serializer = BlogSerializer(blog)
-        return Response(serializer.data)
+class BlogDetailAPIView(RetrieveUpdateDestroyAPIView):
 
-    def put(self, request, pk):
-        blog = get_object_or_404(Blog, pk=pk)
-        serializer = BlogSerializer(blog, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-
-    def delete(self, request, pk):
-        blog = get_object_or_404(Blog, pk=pk)
-        blog.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
