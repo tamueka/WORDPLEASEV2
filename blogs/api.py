@@ -1,5 +1,5 @@
 from rest_framework import status
-from rest_framework.generics import get_object_or_404
+from rest_framework.generics import get_object_or_404, ListCreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -7,17 +7,12 @@ from blogs.models import Blog
 from blogs.serializers import BlogListSerializer, BlogSerializer
 
 
-class BlogListAPIView(APIView):
-    def get(self, request):
-        blogs = Blog.objects.all()
-        serializer = BlogListSerializer(blogs, many=True)
-        return Response(serializer.data)
+class BlogListAPIView(ListCreateAPIView):
 
-    def post(self, request):
-        serializer = BlogSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    queryset = Blog.objects.all()
+
+    def get_serializer_class(self):
+        return BlogListSerializer if self.request.method == 'GET' else BlogSerializer
 
 
 class BlogDetailAPIView(APIView):
