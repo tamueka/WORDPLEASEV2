@@ -13,6 +13,17 @@ class Blog(models.Model):
         (DJANGO, 'Django'),
         (REST, 'Rest')
     )
+
+    PUBLICADO = 'PUB'
+    EDITADO = 'EDT'
+    ELIMINADO = 'ELM'
+
+    ESTADO = (
+        (PUBLICADO, 'Publicado'),
+        (EDITADO, 'Editado'),
+        (ELIMINADO, 'Eliminado')
+    )
+
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
     texto = models.CharField(max_length=150)
@@ -21,6 +32,7 @@ class Blog(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     modificacion = models.DateTimeField(auto_now=True)
     categorias = models.CharField(max_length=3, choices=CATEGORIAS)
+    publicado = models.CharField(max_length=3, choices=ESTADO)
 
     def __str__(self):
         return '{0} ({1})'.format(self.titulo, self.get_categorias_display())
