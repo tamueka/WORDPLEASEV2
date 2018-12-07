@@ -11,6 +11,9 @@ class BlogListAPIView(ListCreateAPIView):
     queryset = Blog.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def get_queryset(self):
+        return Blog.objects.all() if self.request.user.is_authenticated else Blog.objects.all().filter(publicado=Blog.PUBLICADO)
+
     def get_serializer_class(self):
         return BlogListSerializer if self.request.method == 'GET' else BlogSerializer
 
