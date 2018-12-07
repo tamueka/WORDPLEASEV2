@@ -2,7 +2,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from blogs.models import Blog
-from blogs.permissions import BlogPermision #permisos creados por nosotros
+from blogs.permissions import BlogPermission #permisos creados por nosotros
 from blogs.serializers import BlogListSerializer, BlogSerializer
 
 
@@ -22,4 +22,4 @@ class BlogDetailAPIView(RetrieveUpdateDestroyAPIView):
 
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
-    permission_classes = [BlogPermision]
+    permission_classes = [BlogPermission]

@@ -1,11 +1,7 @@
 from rest_framework.permissions import BasePermission
 
 
-class BlogPermision(BasePermission):
-    def has_permission(self, request, view):
-        #has_permision se ejecuta en primer lugar
-        #define si el usuario autenticado puede realizar la accion
-        return request.user.is_authenticated or request.method == 'GET'
+class BlogPermission(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         #define si el usuario aunteticvado puede realizar la accion sobre el objeto ob
