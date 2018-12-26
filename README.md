@@ -39,3 +39,4 @@ En la URL /signup el usuario podrá registrarse en la plataforma indicando su no
 nombre de usuario, e-mail y contraseña.
 "# WORDPLEASEV2" 
 "# WORDPLEASEV2" 
+"# WORDPLEASEV2" 
