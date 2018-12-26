@@ -24,7 +24,7 @@ class Blog(models.Model):
         (ELIMINADO, 'Eliminado')
     )
 
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
     texto = models.CharField(max_length=150)
     cuerpo = models.TextField()

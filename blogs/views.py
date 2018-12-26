@@ -17,11 +17,11 @@ class HomeView(View):
 class BlogDetailView(View):
     def get(self, request, blog_pk):
         try:
-                blog = Blog.objects.get(pk=blog_pk)
-                context = {'blog': blog}
-                return render(request, 'blogs/blog_detail.html', context)
+            blog = Blog.objects.get(pk=blog_pk)
+            context = {'blog': blog}
+            return render(request, 'blogs/blog_detail.html', context)
         except Blog.DoesNotExist:
-                return HttpResponse('Blog not found', status=404)
+            return HttpResponse('Blog not found', status=404)
 
 
 class BlogView(View):
