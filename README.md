@@ -38,3 +38,4 @@ En la URL /logout el usuario podrá hacer logout de la plataforma
 En la URL /signup el usuario podrá registrarse en la plataforma indicando su nombre, apellidos,
 nombre de usuario, e-mail y contraseña.
 "# WORDPLEASEV2" 
+"# WORDPLEASEV2" 
